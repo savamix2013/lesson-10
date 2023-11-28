@@ -1,13 +1,16 @@
-function printNumbers(from, to) {
-  let current = from;
+const prompt = require('prompt-sync')();
 
-  setTimeout(function go() {
-    console.log(current);
-    if (current < to) {
-      setTimeout(go, 1000);
-    }
-    current++;
-  }, 1000);
+function printMessage(message) {
+  console.log(message);
 }
 
-printNumbers(5, 10);
+function scheduleMessage() {
+  const delay1 = prompt('Введіть час затримки для першого повідомлення (у мілісекундах): ');
+  const secondWord = prompt('Введіть друге слово: ');
+
+  setTimeout(() => {
+    printMessage(secondWord);
+  }, parseInt(delay1, 10));
+}
+
+scheduleMessage();
